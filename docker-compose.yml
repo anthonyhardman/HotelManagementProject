@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  irodb:
+    image: postgres
+    container_name: hotel
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=hotel
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - ./creation.sql:/docker-entrypoint-initdb.d/Schema_Creation.sql
+      - ./hotel_data:/var/lib/postgresql/data
